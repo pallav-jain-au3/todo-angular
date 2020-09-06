@@ -18,9 +18,6 @@ app.use((req, res, next) => {
 
 app.use("/task", tasksRoute);
 
-app.get("/testUser", (req,res) => {
-    new firebase.auth.GoogleAuthProvider();
-    auth.signInWithEmailAndPassword(email, password);
-})
+
 
 exports.app = functions.https.onRequest(app);
