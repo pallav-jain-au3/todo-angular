@@ -1,0 +1,17 @@
+.item{
+  display: flex;
+  justify-content: space-between; 
+  width: 100%;
+
+}
+
+.item:hover{
+    cursor: pointer;
+}
+
+mat-list-item{
+    border : 1px solid;
+    padding : 2rem 5rem;
+}
+
+

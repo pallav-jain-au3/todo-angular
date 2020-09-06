@@ -1,0 +1,37 @@
+<div class="row container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">    
+<mat-card>
+    <mat-card-content>
+        <div>
+            <h2>Login</h2>
+        </div>
+        <form (ngSubmit) = "onLogin()" name = "loginForm" [formGroup] = "loginForm">
+            <div class = "input">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput type = "text" formControlName = "email" required/>
+                    <mat-error *ngIf = "loginForm.get('email').errors?.required">
+                        Email Required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class = "input">
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput type = "password" formControlName = "password" required/>
+                    <mat-error *ngIf = "loginForm.get('password').errors?.required">
+                        Password Required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <button type = "submit" mat-flat-button color="primary" (click) ="onLogin()" >Login</button>
+            </div>
+            <a routerLink="/signup">Don't have an account? Register here. </a>
+        </form>
+    </mat-card-content>
+</mat-card>
+    </div>
+    <div class="col md-4"></div>
+</div>

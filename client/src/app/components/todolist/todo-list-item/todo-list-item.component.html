@@ -1,0 +1,21 @@
+<mat-list-item role="listitem">
+
+<div class = "item" (click) = "openTodo()" >
+    <div>
+    {{todo.title}}
+    </div>
+
+    <div>    
+        <div *ngIf="todo.isComplete; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock> <button mat-icon-button (click) = "onDone(false);  $event.stopPropagation()">
+            <mat-icon matTooltip="add to todo"  color = "primary">undo</mat-icon>
+        </button></ng-template>
+         <ng-template #elseBlock> <button mat-icon-button (click) = "onDone(true);  $event.stopPropagation()">
+            <mat-icon matTooltip="add to complete"  color = "primary">done</mat-icon>
+        </button></ng-template>        
+    <button mat-icon-button (click) = "onDelete();  $event.stopPropagation()">
+        <mat-icon matTooltip="delete todo" color = "primary">delete</mat-icon>
+    </button>
+</div>
+</div>
+</mat-list-item>

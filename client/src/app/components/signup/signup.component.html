@@ -1,0 +1,38 @@
+<div class="row container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">    
+<mat-card>
+    <mat-card-content>
+        <div>
+            <h2>Register</h2>
+        </div>
+        <form (ngSubmit) = "onRegister()" name = "registerForm" [formGroup] = "registerForm">
+            
+            <div class = "input">
+                <mat-form-field  >
+                    <mat-label>Email</mat-label>
+                    <input matInput type = "text" formControlName = "email" required/>
+                    <mat-error *ngIf = "registerForm.get('email').errors?.required">
+                        Email Required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class = "input">
+                <mat-form-field  >
+                    <mat-label>Password</mat-label>
+                    <input matInput type = "password" formControlName = "password" required/>
+                    <mat-error *ngIf = "registerForm.get('password').errors?.required">
+                        Password Required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <button type = "submit" mat-flat-button color="primary" (click) ="onRegister()" >Register</button>
+            </div>
+            <a routerLink="/login">Already have an account? Login here. </a>
+        </form>
+    </mat-card-content>
+</mat-card>
+    </div>
+    <div class="col md-4"></div>
+</div>

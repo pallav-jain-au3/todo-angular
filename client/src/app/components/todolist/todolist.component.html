@@ -1,0 +1,72 @@
+
+<div class="container">
+<div class="text-center header">
+    <h1>To do Lists</h1>
+    <div>
+    <button mat-raised-button color="accent" (click)='logout()'>Logout</button>
+</div>
+</div>
+<div>
+    
+</div>
+<div class="row mt-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12 add">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                        <mat-form-field style="width: 100%;" appearance = "outline">
+                            <mat-label>Press enter to add todos</mat-label>
+                            <input matInput type="text" name="newTodo" [(ngModel)]="newTodo"
+                                (keyup.enter)="onAddTodo()">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 col-md-4 text-left">
+                        
+                        <button w-100 mat-raised-button (click)="onAddTodo()" [disabled]="!newTodo.length" color = "primary" class= "add-todo">
+                           Add
+                        </button>
+                     
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                        <button mat-flat-button (click)= "toggleShowCompleted()" 
+                        [color] = "!showCompleted ? 'accent' :null"
+                        >Todos</button>  
+                    </div>
+                    <div class="col-md-6 col-sm-6  col-xs-6 text-left">
+                        <button mat-flat-button
+                        (click)= "toggleShowCompleted()"
+                        [color] = "showCompleted ? 'accent' :null"
+                        >Completed</button> 
+                     </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <mat-list role="list">
+
+
+                    <div *ngIf="todoList.length; then thenBlock else elseBlock"></div>
+                    <ng-template #elseBlock>
+                        <mat-list-item>
+                            No todos added
+                        </mat-list-item>
+                    </ng-template>
+                    <ng-template #thenBlock>
+
+                        <div *ngFor="let item of todoList">
+                            <app-todo-list-item [todo]="item" (delete)="onDelete($event)" (update)="updateTodo($event)">
+                            </app-todo-list-item>
+                        </div>
+
+                    </ng-template>
+                </mat-list>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

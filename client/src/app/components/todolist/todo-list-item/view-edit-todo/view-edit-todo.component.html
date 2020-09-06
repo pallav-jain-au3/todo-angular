@@ -1,0 +1,30 @@
+<div class = "dialog">
+<h2 mat-dialog-title>{{data.todo.title}}</h2>
+
+<mat-dialog-content>
+    <form (ngSubmit) = "save()" name = "todoForm" [formGroup] = "todoForm">
+  <div>
+    <mat-form-field>
+        <mat-label >Title</mat-label>
+        <input matInput
+        matInput type = "text" formControlName = "title" required [readonly]= "editTitle" (click) ="makeEditable('title')"/>
+    </mat-form-field>
+</div> 
+<div>
+    <mat-form-field>
+        <mat-label >Description</mat-label>
+        <textarea matInput
+        matInput type = "text" formControlName = "description" required [readonly]= "editDescription" (click) ="makeEditable('description')"  ></textarea>
+    </mat-form-field>
+</div> 
+
+</form>    
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class = "actions">
+    <button mat-raised-button mat-dialog-close>Close</button>
+    <button mat-raised-button color = "primary" (click)="save()">Save</button>
+</div>
+</mat-dialog-actions>
+</div>
